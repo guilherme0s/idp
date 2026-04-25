@@ -1,0 +1,29 @@
+micronaut:
+  application:
+    name: IDP
+  security:
+    intercept-url-map:
+      - pattern: /swagger/**
+        access: isAnonymous()
+      - pattern: /swagger-ui/**
+        access: isAnonymous()
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+datasources:
+  default:
+    driver-class-name: org.postgresql.Driver
+    db-type: postgres
+    dialect: POSTGRES
+    url: ${MICRONAUT_DATASOURCES_DEFAULT_URL:`jdbc:postgresql://localhost:5432/postgres`}
+    username: ${MICRONAUT_DATASOURCES_DEFAULT_USERNAME:postgres}
+    password: ${MICRONAUT_DATASOURCES_DEFAULT_PASSWORD:postgres}
+liquibase:
+  datasources:
+    default:
+      change-log: classpath:db/changelog/db.changelog-master.xml
