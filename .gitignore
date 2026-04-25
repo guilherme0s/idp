@@ -5,6 +5,7 @@ build/
 target/
 out/
 .micronaut/
+.vscode/
 .idea
 *.iml
 *.ipr
@@ -13,3 +14,6 @@ out/
 .settings
 .classpath
 .factorypath
+node_modules/
+dist/
+route-tree.gen.ts
